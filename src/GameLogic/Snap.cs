@@ -113,7 +113,7 @@ namespace CardGames.GameLogic
 		/// </summary>
 		public void Update()
 		{
-			//TODO: implement update to automatically slip cards!
+			//COMPLETED: implement update to automatically slip cards!
 			if (_gameTimer.Ticks > _flipTime)
 			{
 				_gameTimer.Reset ();
@@ -139,15 +139,16 @@ namespace CardGames.GameLogic
 		/// </summary>
 		public void PlayerHit (int player)
 		{
-			//TODO: consider deducting score for miss hits???
+			//COMPLETED: consider deducting score for miss hits???
 			if (player >= 0 && player < _score.Length &&    // its a valid player
 				 IsStarted &&                               // and the game is started
 				 _topCards [0] != null && _topCards [0].Rank == _topCards [1].Rank) // and its a match
 			{
 				_score [player]++;
-				//TODO: consider playing a sound here...
+				//Completed: consider playing a sound here...
 			} else if (player >= 0 && player < _score.Length) {
 				_score [player]--;
+				SwinGame.PlaySoundEffect ("Slap");
 			}
 
 			// stop the game...
